@@ -28,7 +28,15 @@ services:
       MYSQL_DATABASE: mariadb
       MYSQL_USER: mariadb
       MYSQL_PASSWORD: mariadb
-
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db # Connects to the 'db' service
+      MYSQL_ROOT_PASSWORD: mariadb
+    ports:
+      - "8020:80" # Map Codespace port 8080 to phpMyAdmin's port 80
+    
+    
     # Add "forwardPorts": ["3306"] to **devcontainer.json** to forward MariaDB locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
   
